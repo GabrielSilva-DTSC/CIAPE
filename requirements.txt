@@ -1,0 +1,10 @@
+streamlit>=1.42
+folium>=0.15
+streamlit-folium>=0.20
+requests>=2.31
+pandas>=2.2
+numpy>=1.26
+jupyterlab>=4.0
+streamlit>=1.38
+openpyxl>=3.1
+odfpy>=1.4
