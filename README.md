@@ -45,6 +45,8 @@ Essa validação está documentada em `notebooks/analise_censo_edu_sup.ipynb`.
 PROJETO-CIAPE/
 ├── app/
 │   ├── app.py                       # Dashboard interativo (Streamlit)
+│   ├── app_ciape.py                 # Aplicativo CIAPE para publicação
+│   ├── requirements.txt             # Dependências do aplicativo publicado
 │   └── dados_app/                   # Bases tratadas consumidas pelo app
 │       ├── df_mvp.csv
 │       └── df_editais.csv
@@ -125,9 +127,21 @@ pip install -r requirements.txt
 # 4. Rodar o notebook de análise
 jupyter lab notebooks/analise_censo_edu_sup.ipynb
 
-# 5. Rodar o dashboard (quando disponível)
-streamlit run app/app.py
+# 5. Rodar o aplicativo CIAPE
+streamlit run app/app_ciape.py
 ```
+
+Abra `http://localhost:8501` no navegador. Execute o comando a partir da raiz
+do repositório. Se estiver na pasta `Projetos`, entre antes em `PROJETO-CIAPE`.
+
+## Publicação no Streamlit Community Cloud
+
+Conecte a conta do GitHub em [share.streamlit.io](https://share.streamlit.io/),
+crie um aplicativo a partir do repositório `GabrielSilva-DTSC/CIAPE`, selecione
+a branch `main` e informe `app/app_ciape.py` como arquivo principal. O serviço
+usa `app/requirements.txt` para instalar as dependências do aplicativo; os CSVs
+necessários já estão em `app/dados_app/`. Novos commits em `main` atualizam o
+aplicativo publicado automaticamente.
 
 > **Nota:** os caminhos de leitura de dados no notebook atual estão hardcoded como absolutos locais. Ajuste-os para caminhos relativos (`../data/...`) antes de rodar em outra máquina.
 
@@ -138,7 +152,7 @@ streamlit run app/app.py
 - [x] Construção do identificador único hierárquico (`ID_completo`) e merge validado entre as bases.
 - [x] Definição das 11 perguntas analíticas e implementação dos agrupamentos.
 - [ ] Exibição, interpretação e visualização dos resultados das perguntas analíticas.
-- [ ] Construção do **dashboard interativo em Streamlit**, com mapa (latitude/longitude por campus) como interface principal.
+- [x] Construção do **dashboard interativo em Streamlit**, com mapa (latitude/longitude por campus) como interface principal.
 - [ ] Expansão da base para outras IES públicas além da UFPB.
 
 ## Limitações conhecidas
